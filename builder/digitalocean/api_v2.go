@@ -293,6 +293,7 @@ func NewRequestV2(d DigitalOceanClientV2, path string, method string, req interf
 	}
 	// Add the authentication parameters
 	request.Header.Add("Authorization", "Bearer "+d.APIToken)
+	request.Header.Add("Content-Type", "application/json")
 
 	log.Printf("sending new request to digitalocean: %s", url)
 
