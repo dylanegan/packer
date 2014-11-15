@@ -327,6 +327,18 @@ func NewRequestV2(d DigitalOceanClientV2, path string, method string, req interf
 			resp.StatusCode, body))
 	}
 
+  okCodes := map[int]bool {
+    200: true,
+    201: true,
+    202: true,
+    203: true,
+    204: true,
+  }
+
+  if okCodes[resp.StatusCode] != true {
+    return errors.New(fmt.Sprintf("Request failed. %v %s", resp.StatusCode, body))
+  }
+
 	return nil
 }
 
